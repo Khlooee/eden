@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【伊甸】拍賣規則</title><link rel="icon" href="LOGO.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .resource-info {
+            display: none;
+            margin: 50px;
+            color: #e0e0e07a;
+            border: 1px solid #d3d3d36f; /* 新增灰色外框線 */
+            padding: 10px; /* 增加內邊距 */
+        }
+        .resource-button {
+            cursor: pointer;
+            margin: 5px;
+            display: inline-block;
+        }
+        .resource-button img {
+            width: 75px; /* 調整寬度為原來的1.5倍 */
+            height: 75px; /* 調整高度為原來的1.5倍 */
+        }
+        .resource-button.selected {
+            background-color: #ffffff; /* 灰色背景 */
+        }
+        .resource-container {
+            display: flex; /* 使用彈性盒子排列圖標 */
+            justify-content: space-around; /* 均勻分配空間 */
+        }
+
+        .images {
+    display: flex; /* 使用 Flexbox */
+    justify-content: center; /* 水平置中 */
+    align-items: center; /* 垂直置中 */
+    margin: 0 auto; /* 水平置中（適用於 block 元素） */
+    width: 80%; /* 設定寬度，可根據需求調整 */
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">公會制度</a>
+            <img src="LOGO.png" alt="LOGO" style="height: 70px; cursor: pointer;"> <!-- 把前面的>去掉 onclick="location.href='rank.html';"> -->
+            <a href="auction.html">拍賣規則</a>
+        </nav>
+    </header>
+    <main>
+        
+        <h2>基本規則</h2>
+        <ul>
+            <p style="text-align: center; font-size: 24px;font-weight:800;">
+
+            <li>剩2分鐘不可壓標，當然也不可以2:01秒壓標。</li>
+            <li>要標什麼，時間充裕的時候就趕快標一標，我不想看到有人因此鬧不愉快。</li>
+            <li>但凡有惡意壓標嫌疑的G八人，一個禮拜禁止參與競標，第二次踢。</li>
+        </ul>
+
+        <h2>主副職制度</h2>
+        <ul>
+            <li>主職對本職資源有優先競拍權，只有沒有主職願意底價購買，才會輪到副職。</li>
+            <li>只有會開記事本留言的資源才會套用主副職制度</li>
+            <li>每人每次更改職業有2個月的冷卻時間</li>
+        </ul>
+
+        <h2>紫裝與紫技</h2>
+        <ul>
+            <li>紫裝除了王武會開記事本留言競標外，其他沒限制，本職副職都可以標來衝裝。</li>
+            <li>紫技會開記事本讓本職先學，本職覺得成本價減半還是太貴，才會開放副職，底價500一起競標。</li>
+            <li>有些價高的物品是先在記事本'留言'，晚上11點才在公會頻競標，標到所有留言者棄標為止。</li>
+            <li>得標者如果沒現鑽，可以等個幾天籌到鑽再開。</li>
+        </ul>
+    
+        <h2>金色資源</h2>
+        <div class="resource-container">
+            <div class="resource-button" onclick="toggleInfo('goldEssenceInfo', this)">
+                <img src="金精髓.png" alt="金精髓">
+            </div>
+            <div class="resource-button" onclick="toggleInfo('goldEssenceBoxInfo', this)">
+                <img src="金精髓自選箱.jpg" alt="金精髓自選箱">
+            </div>
+            <div class="resource-button" onclick="toggleInfo('goldFabricInfo', this)">
+                <img src="金布.png" alt="金布">
+            </div>
+            <div class="resource-button" onclick="toggleInfo('goldInkInfo', this)">
+                <img src="金墨水.png" alt="金墨水">
+            </div>
+            <div class="resource-button" onclick="toggleInfo('goldWeaponInfo', this)">
+                <img src="金武.jpg" alt="金武">
+            </div>
+            <div class="resource-button" onclick="toggleInfo('otherGoldItemsInfo', this)">
+                <img src="其他金裝.png" alt="其他金裝">
+            </div>
+        </div>
+        <div id="goldEssenceInfo" class="resource-info">
+            <p><strong>金精髓：</strong>1000鑽，做技能/裝備(有金布/金墨優先排)，沒人排隊則開放全體標(做收藏OK)。</p>
+        </div>
+        <div id="goldEssenceBoxInfo" class="resource-info" style="display:none;">
+            <p><strong>金精髓自選箱：</strong>有金墨/金布者可參與競標。</p>
+        </div>
+        <div id="goldFabricInfo" class="resource-info" style="display:none;">
+            <p><strong>金布：</strong>戰力110+可參與團頻競標。(記事本留言後，隔日晚上11點在公會頻競標到所有人留言者棄標為止。)</p>
+        </div>
+        <div id="goldInkInfo" class="resource-info" style="display:none;">
+            <p><strong>金墨：</strong>戰力110+可參與團頻競標。(記事本留言後，隔日晚上11點在公會頻競標到所有人留言者棄標為止。)</p>
+        </div>
+        <div id="goldWeaponInfo" class="resource-info" style="display:none;">
+            <p><strong>金武：</strong>該職業最高戰前3位競標，已有金武者不可參與競標。</p>
+        </div>
+        <div id="otherGoldItemsInfo" class="resource-info" style="display:none;">
+            <p><strong>其他金裝：</strong>開放全體標，衝裝不可競標。</p>
+        </div>
+        <ul>
+            <li><strong>金武碎片：</strong>開放120+排隊，排到做成功為止。</li>
+            <li><strong>金防/金飾碎片：</strong>開放120+排隊，每輪20個。每輪只可選一種排，成功則不可排另一個，沒成功可換種類排。</li>
+        </ul>
+        <h2>指定資源</h2>
+        <ul>
+            <li>每人每月有2次200鑽預定藍裝機會，本月110萬加兩次次數，逐月遞增。</li>
+            <li>120萬+每次最多可保留2次指定藍裝，出了的話優先開給你。</li>
+            <li>例如：次數有4次，先保留2次，拿到1個後再留下一個。次數剩1，只能留一個，沒次數則不能留。</li>
+        </ul>
+    
+        <h2>城鑽分配</h2>
+        <div class="images";>
+            <img src="1740087435147.png" alt="圖片1">
+        </div>
+    </main>
+    <footer>
+        <div class="social-icons">
+            <p style="font-size: 18px;">
+                <img src="line.png" alt="LINE" style="vertical-align: middle;">LINE：chloecheng678</p>
+            <p style="font-size: 18px;">
+                <img src="discord.png" alt="Discord" style="vertical-align: middle;"> Discord：sakura._.666</p>
+        </div>
+    </footer>
+    <script>
+        function toggleInfo(infoId, button) {
+            const infoDivs = document.querySelectorAll('.resource-info');
+            infoDivs.forEach(div => div.style.display = 'none'); // 隱藏所有敘述
+            const infoDiv = document.getElementById(infoId);
+            infoDiv.style.display = 'block'; // 顯示選中的敘述
+            
+            // 切換選中狀態
+            const buttons = document.querySelectorAll('.resource-button');
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected'); // 只為選中的按鈕添加選中樣式
+        }
+        console.log("拍賣規則頁面已加載");
+    </script>
+</body>
+</html>

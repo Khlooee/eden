@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首頁</title><link rel="icon" href="LOGO.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">公會制度</a>
+            <img src="LOGO.png" alt="LOGO" style="height: 70px; cursor: pointer;"> <!-- 把前面的>去掉 onclick="location.href='rank.html';"> -->
+            <a href="auction.html">拍賣規則</a>
+        </nav>
+    </header>
+    <main>
+        <style>
+            /* 自定義滾動條樣式 */
+            .left-column {
+                flex: 1;
+                padding: 10px;
+                overflow-y: auto;
+                max-height: 600px;
+                scrollbar-width: thin; /* Firefox */
+                scrollbar-color: #171717b4 #000000; /* Firefox */
+            }
+
+            /* Webkit 瀏覽器（Chrome, Safari） */
+            .left-column::-webkit-scrollbar {
+                width: 8px; /* 滾動條寬度 */
+            }
+
+            .left-column::-webkit-scrollbar-track {
+                background: #000000; /* 滾動條背景 */
+            }
+
+            .left-column::-webkit-scrollbar-thumb {
+                background-color: #2b2b2b; /* 滾動條顏色 */
+                border-radius: 1px; /* 滾動條圓角 */
+            }
+
+            .left-column::-webkit-scrollbar-thumb:hover {
+                background-color: #232323; /* 滾動條懸停顏色 */
+            }
+
+            
+
+.rank-number {
+    font-size: 30px; /* "1" 的字體大小 */
+    font-weight: 750;
+    margin-left: 14px; 
+    margin-right: 2px; 
+    text-align: center; /* ID 置中顯示 */
+    
+}
+
+.rank-suffix {
+    font-size: 19px; /* "st" 的字體大小 */
+    vertical-align: super; /* 讓 st 上標對齊 */
+    margin-right: 15px; 
+    text-align: center; /* ID 置中顯示 */
+}
+
+.small-text {
+    font-size: 22px; /* 修改為 20px */
+    font-weight: 500;
+    margin-right: 10px; /* 將 margin-right 調整為 10px */
+    text-align: center; /* ID 置中顯示 */
+}
+
+.rank-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%; /* 調整為 100% */
+    text-align: center; /* ID 置中顯示 */
+}
+
+.rank-item img {
+    flex: 0 0 20%; /* 圖標佔比 20% */
+    width: 50px; /* 圖標寬度 */
+    height: 50px; /* 圖標高度 */
+    border-radius: 10px; /* 圓角 */
+    border: 0.5px solid rgb(255, 248, 205); /* 灰色邊框 */
+    object-fit: cover; /* 確保圖標縮放到剛剛好 */
+    text-align: center; /* ID 置中顯示 */
+}
+
+.rank-number, .small-text, .class-text {
+    text-align: center; /* ID 置中顯示 */
+}
+
+.class-text {
+    flex: 0 0 20%; /* 職業佔比 20% */
+    text-align: center; /* ID 置中顯示 */
+    font-size: 16px;
+    color: #6c6c6c;
+}
+
+hr {
+    border: none; /* 移除預設邊框 */
+    height: 0.2px; /* 設置高度為 0.5px */
+    background-color: rgba(148, 148, 148, 0.37); /* 設置顏色為灰色 */
+}
+
+        </style>
+
+        <div class="container" style="display: flex;">
+            <div class="left-column">
+                <h2>戰力排名</h2><br>
+                <div class="ranking"style="position: sticky; top: 0; height: 400px; overflow-y: auto;">
+                    <div class="rank-item" onclick="showCharacterInfo('lotso')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">1</span><span class="rank-suffix">st </span></span>
+                        </span>
+                        <img src="大劍.png" alt="大劍" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">lotso</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">大劍</span>
+                    </div>
+                    <hr>
+                    <div class="rank-item" onclick="showCharacterInfo('Destiny')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">2</span><span class="rank-suffix">nd</span></span>
+                        </span>
+                        <img src="法杖.png" alt="法杖" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">Destiny</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">法杖</span>
+                    </div>
+                    <hr>
+                    <div class="rank-item" onclick="showCharacterInfo('AIDEN')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">3</span><span class="rank-suffix">rd</span></span>
+                        </span>
+                        <img src="寶珠.png" alt="寶珠" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">AIDEN</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">寶珠</span>
+                    </div>
+                    <hr>
+                    <div class="rank-item" onclick="showCharacterInfo('Redro')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">4</span><span class="rank-suffix">th</span></span>
+                        </span>
+                        <img src="短劍.png" alt="短劍" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">Redro</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">短劍</span>
+                    </div>
+                    <hr>
+                    <div class="rank-item" onclick="showCharacterInfo('Mansel')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">5</span><span class="rank-suffix">th</span></span>
+                        </span>
+                        <img src="大劍.png" alt="大劍" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">Mansel</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">大劍</span>
+                    </div>
+                    <hr>
+                    <div class="rank-item" onclick="showCharacterInfo('烈陽')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">6</span><span class="rank-suffix">th</span></span>
+                        </span>
+                        <img src="大劍.png" alt="大劍" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">烈陽</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">大劍</span>
+                    </div>
+                    <hr>
+                    <div class="rank-item" onclick="showCharacterInfo('老陰比')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">7</span><span class="rank-suffix">th</span></span>
+                        </span>
+                        <img src="槍手.png" alt="槍手" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">老陰比</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">槍手</span>
+                    </div>
+                    <hr>
+                    <div class="rank-item" onclick="showCharacterInfo('威廉')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">8</span><span class="rank-suffix">th</span></span>
+                        </span>
+                        <img src="法杖.png" alt="法杖" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">威廉</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">法杖</span>
+                    </div>
+                    <hr>
+                    <div class="rank-item" onclick="showCharacterInfo('好熊寶')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">9</span><span class="rank-suffix">th</span></span>
+                        </span>
+                        <img src="大劍.png" alt="大劍" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">好熊寶</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">大劍</span>
+                    </div>
+                    <hr>
+                    <div class="rank-item" onclick="showCharacterInfo('Disney')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">10</span><span class="rank-suffix">th</span></span>
+                        </span>
+                        <img src="大劍.png" alt="大劍" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">Disney</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">大劍</span>
+                    </div>
+                    <hr>
+                    <div class="rank-item" onclick="showCharacterInfo('梗梗梗')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">11</span><span class="rank-suffix">th</span></span>
+                        </span>
+                        <img src="大劍.png" alt="大劍" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">梗梗梗</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">大劍</span>
+                    </div>
+                    <hr>
+                    <div class="rank-item" onclick="showCharacterInfo('LosVII')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">12</span><span class="rank-suffix">th</span></span>
+                        </span>
+                        <img src="短劍.png" alt="短劍" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">LosVII</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">短劍</span>
+                    </div>
+                    <hr>
+                    <div class="rank-item" onclick="showCharacterInfo('凍齋啡')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">13</span><span class="rank-suffix">th</span></span>
+                        </span>
+                        <img src="短劍.png" alt="短劍" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">凍齋啡</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">短劍</span>
+                    </div>
+                    <hr>
+                    <div class="rank-item" onclick="showCharacterInfo('草根')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">14</span><span class="rank-suffix">th</span></span>
+                        </span>
+                        <img src="法杖.png" alt="法杖" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">草根</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">法杖</span>
+                    </div>
+                    <hr>
+                    <div class="rank-item" onclick="showCharacterInfo('糖果貓')" style="display: flex; align-items: center; justify-content: space-between;">
+                        <span class="large-text" style="flex: 1; text-align: center;">
+                            <span><span class="rank-number">15</span><span class="rank-suffix">th</span></span>
+                        </span>
+                        <img src="大劍.png" alt="大劍" style="width: 50px; height: 50px; margin: 0 10px; flex: none;">
+                        <span class="small-text" style="flex: 1; text-align: center;">糖果貓</span>
+                        <span class="class-text" style="flex: 1; text-align: right;">大劍</span>
+                    </div>
+                </div>
+            </div>
+            <div class="right-column" style="flex: 1; padding: 10px;">
+                <h2>玩家介紹</h2>
+                <div id="character-info" style="display: none;">
+                    <p id="info-content"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="social-icons">
+            <p style="font-size: 18px;">
+                <img src="line.png" alt="LINE" style="vertical-align: middle;">LINE：chloecheng678</p>
+            <p style="font-size: 18px;">
+                <img src="discord.png" alt="Discord" style="vertical-align: middle;"> Discord：sakura._.666</p>
+        </div>
+    </footer>
+    <script>
+        console.log("網站已加載");
+        function showCharacterInfo(name) {
+            const infoContent = {
+                'lotso': '伊甸NPC，固定刷新時間：22:00~2:30.本人只會說：恩恩 / = = / XD / OK。據說是因為年紀大了懶得打字。',
+                'Destiny': '+10金頭的辣格男人，全職高手，你想要的紅我都有。',
+                'AIDEN': '喜歡用小黃雞貼圖的諂媚韓國課長，對內喜歡賣萌，對外嘲諷拉滿',
+                'Redro': '火雞屁孩：老子要幹翻所有人！！！！！',
+                'Mansel': '差一次保底紅的極品非洲人，課最多的錢，抽最爛的卡。',
+                '烈陽': '笨笨的原始人，會做出一些難以理解的笨事，還好老天保佑，傻人有傻福，總算安全長大了。',
+                '老陰比': '用陽壽玩遊戲的狗托，戰績：開到一把金槍、合紅1次過、點2下出金墨水、金槍隨便點還+9 = =',
+                '威廉': '伊甸新晉備胎黑奴，公關能力極強，三言兩語就能把妹子哄得服服帖帖。',
+                '好熊寶': '唐寶寶，我好生氣氣',
+                'Disney': 'Disney的介紹...',
+                '梗梗梗': '梗梗梗的介紹...',
+                'LosVII': 'LosVII的介紹...',
+                '凍齋啡': '仇女大將軍，專扁女人，連自家的都不放過。',
+                '草根': '身上背的不是+9就是+10，剛買的裝莫名其妙就會過4。',
+                '糖果貓': '糖果貓的介紹...'
+            };
+            document.getElementById('info-content').innerText = infoContent[name];
+            document.getElementById('character-info').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

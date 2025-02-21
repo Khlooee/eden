@@ -1,0 +1,115 @@
+body {
+    background-color: black;
+    color: rgb(215, 215, 215);
+    font-family: Noto Sans TC;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    flex-direction: column; /* 使 LOGO 和導航按鈕垂直排列 */
+    align-items: center; /* 水平置中 */
+    padding: 1px;
+    background-color: #0f0f0f;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s;
+}
+header:hover {
+    background-color: #252525;
+}
+header a {
+    color: rgb(222, 222, 222);
+    font-weight: 800;
+    text-decoration: none;
+    padding: 18px 50px 33px 50px;
+    transition: color 0.3s;
+}
+header a:hover {
+    color: #fff4c7;
+}
+header nav {
+    display: flex;
+    justify-content: center; /* 水平置中按鈕 */
+    margin-top: 10px; /* LOGO 和導航按鈕之間的間距 */
+}
+main {
+    padding: 20px;
+    width: 85%;
+    margin: auto;
+    transition: opacity 0.5s;
+}
+
+h1, h2 {
+    color: #e4e4e4;
+    font-size: 26px;
+    transform: skewX(-15deg); /* 整體內容向右傾斜 15 度 */
+border: 0.2cm solid #333; /* 0.5 公分的框線 */
+padding: 10px 10px 10px 20px ; /* 內邊距 */
+box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* 增加陰影效果 */
+}
+
+p {
+    color: #e4e4e4;
+    font-size: 22px;
+}
+li {
+    color: #cccccc;
+    font-size: 20px;
+}
+footer {
+    background-color: #0f0f0f;
+    color: rgb(147, 147, 147);
+    text-align: center;
+    padding: 0px;
+    position: relative;
+    transition: background-color 0.3s;
+}
+footer:hover {
+    background-color: #252525;
+}
+.social-icons {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-around;
+
+}
+.social-icons img {
+    width: 28px;
+    
+    margin: 0px 10px 0px 20px;
+}
+@media (min-width: 768px) {
+    body {
+        padding: 0 5%;
+    }
+}
+
+/* 針對 Chrome、Edge、Safari 的滾動條樣式 */
+::-webkit-scrollbar {
+    width: 8px; /* 滾動條寬度 */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #000000; /* 滾動條軌道顏色 */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2b2b2b; /* 滾動條顏色 */
+    border-radius: 1px; /* 滾動條圓角 */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #232323; /* 滾動條懸停顏色 */
+}
+
+/* 針對 Firefox 的滾動條樣式 */
+html {
+    scrollbar-width: thin; /* 滾動條寬度 */
+    scrollbar-color: #2b2b2b #000000; /* 滾動條顏色和軌道顏色 */
+}
