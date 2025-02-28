@@ -38,12 +38,48 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    margin: 0 px;
 }
 
 .images img {
     transform: scale(0.8); /* 縮小為 0.x 倍 */
 }
+
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            text-align: center;
+        }
+                table {
+                    width: 40%;
+                    margin: 10px auto;
+                    border-collapse: collapse;
+                    background-color: #15151579;
+                    box-shadow: 0px 0px 15px rgba(72, 72, 72, 0.579);
+                    border-radius: 10px;
+                    overflow: hidden;
+                    backdrop-filter: blur(10px); /* 模糊效果 */
+                    -webkit-backdrop-filter: blur(10px); /* 兼容 Safari */
+                    border: 1px solid rgba(255, 255, 255, 0.3); /* 淡色邊框 */
+
+                }
+                th, td {
+                    border: 1px solid #15151579;
+                    padding: 8px;
+                    font-size: 17px;
+                }
+                th {
+                    background-color: #2f2f2f;
+                    color: rgb(255, 255, 255);
+                    padding: 12px;
+                    font-size: 19px;
+                }
+                tr:nth-child(even) {
+                    background-color: #15151579;
+                }
     </style>
 </head>
 <body>
@@ -61,13 +97,13 @@
             <p style="text-align: center; font-size: 24px;font-weight:800;">
 
             <li>剩2分鐘不可壓標，當然也不可以2:01秒壓標。</li>
-            <li>要標什麼，時間充裕的時候就趕快標一標，我不想看到有人因此鬧不愉快。</li>
+            <li>要標什麼，請在時間充裕的時候競標。</li>
             <li>但凡有惡意壓標嫌疑的G八人，一個禮拜禁止參與競標，第二次踢。</li>
         </ul>
 
         <h2>主副職制度</h2>
         <ul>
-            <li>主職對本職資源有優先競拍權，只有沒有主職願意底價購買，才會輪到副職。</li>
+            <li>本職對本職資源有優先競拍權，沒有本職願意底價購買，才會輪到副職。</li>
             <li>只有會開記事本留言的資源才會套用主副職制度</li>
             <li>每人每次更改職業有2個月的冷卻時間</li>
         </ul>
@@ -93,6 +129,9 @@
             <div class="resource-button" onclick="toggleInfo('goldFabricInfo', this)">
                 <img src="金布.png" alt="金布">
             </div>
+            <div class="resource-button" onclick="toggleInfo('goldSkillInfo', this)">
+                <img src="金技.png" alt="金技">
+            </div>
             <div class="resource-button" onclick="toggleInfo('goldInkInfo', this)">
                 <img src="金墨水.png" alt="金墨水">
             </div>
@@ -112,6 +151,9 @@
         <div id="goldFabricInfo" class="resource-info" style="display:none;">
             <p style="font-size: 18px;"><strong>金布：</strong>戰力110+可參與團頻競標。(記事本留言後，隔日晚上11點在公會頻競標到所有人留言者棄標為止。)</p>
         </div>
+        <div id="goldSkillInfo" class="resource-info" style="display:none;">
+            <p style="font-size: 18px;"><strong>金技：</strong>本職前3位高戰可參與團頻競標。(記事本留言後，隔日晚上11點在公會頻競標到所有人留言者棄標為止。)</p>
+        </div>
         <div id="goldInkInfo" class="resource-info" style="display:none;">
             <p style="font-size: 18px;"><strong>金墨：</strong>戰力110+可參與團頻競標。(記事本留言後，隔日晚上11點在公會頻競標到所有人留言者棄標為止。)</p>
         </div>
@@ -121,6 +163,50 @@
         <div id="otherGoldItemsInfo" class="resource-info" style="display:none;">
             <p style="font-size: 18px;"><strong>其他金裝：</strong>開放全體標，衝裝不可競標。(記事本留言後，隔日晚上11點在公會頻競標到所有人留言者棄標為止。)</p>
         </div>
+
+
+        <div class="resource-container">
+            <div class="resource-button" onclick="toggleInfo('epicEssenceInfo', this)">
+                <img src="紫精隨.png" alt="紫精髓">
+            </div>
+            <div class="resource-button" onclick="toggleInfo('epicFabricInfo', this)">
+                <img src="紫布.png" alt="紫布">
+            </div>
+            <div class="resource-button" onclick="toggleInfo('epicInkInfo', this)">
+                <img src="紫技.png" alt="紫技">
+            </div>
+            <div class="resource-button" onclick="toggleInfo('epicSkillInfo', this)">
+                <img src="紫墨水.png" alt="紫墨水">
+            </div>
+            <div class="resource-button" onclick="toggleInfo('epicWeaponInfo', this)">
+                <img src="紫王武.png" alt="紫王武">
+            </div>
+            <div class="resource-button" onclick="toggleInfo('otherEpicItemsInfo', this)">
+                <img src="其他紫裝.png" alt="其他紫裝">
+            </div>
+        </div>
+        <div id="epicEssenceInfo" class="resource-info">
+            <p style="font-size: 18px;"><strong>紫精髓：</strong>500鑽，做技能/裝備(有紫布/紫墨優先排)，沒人排隊則開放全體標(做收藏OK)。</p>
+        </div>
+        </div>
+        <div id="epicFabricInfo" class="resource-info" style="display:none;">
+            <p style="font-size: 18px;"><strong>紫武布/紫防布：</strong>可排隊申請免費發放，每人每輪1張，需回報用途。</p><p style="font-size: 18px;"><strong>紫飾布：</strong>500起標，衝裝可標。</p>
+        </div>
+        <div id="epicSkillInfo" class="resource-info" style="display:none;">
+            <p style="font-size: 18px;"><strong>紫技：</strong>本職優先價 = 成本/2，無本職則開放副職一起500標。(記事本留言金額競標。)</p>
+        </div>
+        <div id="epicInkInfo" class="resource-info" style="display:none;">
+            <p style="font-size: 18px;"><strong>紫墨水：</strong>戰力110+可參與團頻競標。(記事本留言後，隔日晚上11點在公會頻競標到所有人留言者棄標為止。)</p>
+        </div>
+        <div id="epicWeaponInfo" class="resource-info" style="display:none;">
+            <p style="font-size: 18px;"><strong>紫王武：</strong>本職優先價2000，無本職則開放衝裝+副職一起500標。(記事本留言金額競標。)</p>
+        </div>
+        <div id="otherEpicItemsInfo" class="resource-info" style="display:none;">
+            <p style="font-size: 18px;"><strong>其他紫裝：</strong>自用 / 衝裝 / 副職 皆可競標。</p>
+        </div>
+
+
+
         <ul>
             <li><strong>金武碎片：</strong>開放120+排隊，排到做成功為止。</li>
             <li><strong>金防/金飾碎片：</strong>開放120+排隊，每輪20個。每輪只可選一種排，成功則不可排另一個，沒成功可換種類排。</li>
@@ -132,14 +218,29 @@
             <li>Ex：預定次數有4次，可先保留2次，拿到1個後再留下一個。次數剩1，只能留一個，沒次數則不能留。</li>
         </ul>
 
-
-        <h2>福利品</h2>
-        <ul>
-            <li>直接發放的藍布/藍墨水/紫布 自己用不到可以拿去交易所掛售 都是盟內沒有人需要的資源。</li>
-            <li>目前紫防布需求較小，想優先拿的可以向幹部申請，每人每輪可拿一張，沒有主動申請則根據戰力順位發放。</li>
-            <li>藍技每人每輪按照戰力發放15本，130+發30本。僅可用於分解書頁，不可塞收藏，需截圖回報。</li>
-        </ul>
+        <h2>鑽捐福利</h2>
+        <h3 style="text-align: center;">鑽捐每週一統計（無需回報用途，可轉賣 / 轉讓福利）</h3>
+        <div class="container">
+        <table>
+            <tr>
+                <th colspan="2">每週捐滿4天（下列任選1個）</th>
+            </tr>
+            <tr><td>紫防布 x1</td><td>紫武布 x1</td></tr>
+            <tr><td>藍墨 x30</td><td>任選藍布 x50</td></tr>
+            <tr><td colspan="2">免費藍裝預定次數 x1</td></tr>
+        </table>
         
+        <table>
+            <tr>
+                <th colspan="2">每週捐滿7天加碼送（下列任選1個）</th>
+            </tr>
+            <tr><td>紫防布 x1</td><td>紫武布 x1</td></tr>
+            <tr><td>藍墨 x30</td><td>任選藍布 x50</td></tr>
+            <tr><td colspan="2">免費藍裝預定次數 x1</td></tr>
+            <tr><td colspan="2">🆕 分解藍技 x20 (不可自選)</td></tr>
+            <tr><td colspan="2">🆕 任選紫精髓 x1</td></tr>
+        
+        </table></div>
     
         <h2>城鑽分配</h2>
         <div class="images";>
