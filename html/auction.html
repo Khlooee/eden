@@ -15,7 +15,7 @@
     <title>【伊甸】拍賣規則</title>
     <link rel="icon" href="LOGO.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
-    <script src="../visitor-tracker.js" defer></script>
+ 
 
     <style>
         .resource-info {
@@ -281,12 +281,33 @@
                     <img src="discord.png" alt="Discord" style="vertical-align: middle;"> Discord：sakura._.666
                 </p>
             </div>
-            <div id="visitorCounter" style="text-align: right; position: static; background: none;">
+            <div id="visitorCounter" style="text-align: left; position: static; background: none;">
+                <p style="font-size: 18px; margin: 5px;">當前在線：<span id="activeUsers">1</span></p>
+                <p style="font-size: 18px; margin: 5px;">總訪問人數：<span id="totalVisitors">0</span></p>
+                
                 <script>
-                    // 使用 GA4 的 API 獲取實時用戶數
-                    gtag('get', 'G-GK26YHVEMZ', 'client_id', (clientId) => {
-                        console.log('Client ID:', clientId);
-                    });
+                    // 使用 GA4 Data API 獲取數據
+                    function updateVisitorStats() {
+                        // 獲取活躍用戶數
+                        gtag('get', 'G-GK26YHVEMZ', 'screen_resolution', function(screenResolution) {
+                            document.getElementById('activeUsers').textContent = 
+                                window.dataLayer.filter(item => item[0] === 'config').length || '0';
+                        });
+
+                        // 獲取總訪問次數
+                        if (localStorage.getItem('totalVisits')) {
+                            document.getElementById('totalVisitors').textContent = 
+                                localStorage.getItem('totalVisits');
+                        } else {
+                            localStorage.setItem('totalVisits', '1');
+                            document.getElementById('totalVisitors').textContent = '1';
+                        }
+                    }
+
+                    // 頁面加載時更新數據
+                    window.onload = updateVisitorStats;
+                    // 每60秒更新一次數據
+                    setInterval(updateVisitorStats, 60000);
                 </script>
             </div>
         </div>
