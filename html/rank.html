@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GK26YHVEMZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GK26YHVEMZ');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首頁</title><link rel="icon" href="LOGO.png" type="image/png">
+    <title>首頁</title>
+    <link rel="icon" href="LOGO.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
+    <script src="visitor-tracker.js" defer></script>
+  
 </head>
 <body>
     <header>
@@ -255,11 +267,23 @@ hr {
         </div>
     </main>
     <footer>
-        <div class="social-icons">
-            <p style="font-size: 18px;">
-                <img src="line.png" alt="LINE" style="vertical-align: middle;">LINE：chloecheng678</p>
-            <p style="font-size: 18px;">
-                <img src="discord.png" alt="Discord" style="vertical-align: middle;"> Discord：sakura._.666</p>
+        <div class="social-icons" style="display: flex; justify-content: space-between; align-items: center; padding: 20px;margin: 5px 5px 5px 80px;">
+            <div style="text-align: left;">
+                <p style="font-size: 18px; margin: 5px 80px 5px 5px;">
+                    <img src="html/line.png" alt="LINE" style="vertical-align: middle;">LINE：chloecheng678
+                </p>
+                <p style="font-size: 18px; margin: 5px 80px 5px 5px;">
+                    <img src="html/discord.png" alt="Discord" style="vertical-align: middle;"> Discord：sakura._.666
+                </p>
+            </div>
+            <div id="visitorCounter" style="text-align: right; position: static; background: none;">
+                <script>
+                    // 使用 GA4 的 API 獲取實時用戶數
+                    gtag('get', 'G-GK26YHVEMZ', 'client_id', (clientId) => {
+                        console.log('Client ID:', clientId);
+                    });
+                </script>
+            </div>
         </div>
     </footer>
     <script>
