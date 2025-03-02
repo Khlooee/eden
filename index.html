@@ -59,18 +59,17 @@
     </script>
     
     <footer>
-        <div class="social-icons" style="display: flex; justify-content: space-between; align-items: center; padding: 20px;margin: 5px 5px 5px 80px;">
-            <div style="text-align: left;">
-                <p style="font-size: 18px; margin: 5px 80px 5px 5px;">
-                    <img src="html/line.png" alt="LINE" style="vertical-align: middle;"> LINE：chloecheng678
+        <div class="social-icons" style="display: flex; justify-content: space-between; align-items: left; padding: 0.5%;">
+            <div style="text-align: center; align-items: center; width: 100%;">
+                <p style="font-size: 18px; text-align: center;">
+                    <img src="line.png" alt="LINE" style="vertical-align: middle;"> LINE：chloecheng678
                 </p>
-                <p style="font-size: 18px; margin: 5px 80px 5px 5px;">
-                    <img src="html/discord.png" alt="Discord" style="vertical-align: middle;"> Discord：sakura._.666
+                <p style="font-size: 18px; text-align: center;">
+                    <img src="discord.png" alt="Discord" style="vertical-align: middle;"> Discord：sakura._.666
                 </p>
             </div>
-            <div id="visitorCounter" style="text-align: left; position: static; background: none;">
-                <p style="font-size: 18px; margin: 5px;">當前在線：<span id="activeUsers">載入中...</span></p>
-                <p style="font-size: 18px; margin: 5px;">總訪問人數：<span id="totalVisitors">載入中...</span></p>
+        </div>
+
                 <script>
                     // 載入 Google Analytics Data API
                     function loadGoogleAnalytics() {
@@ -119,7 +118,7 @@
                     // 每1分鐘更新一次數據
                     setInterval(updateAnalyticsData, 60000);
                 </script>
-            </div>
+
         </div>
     </footer>
 </body>
