@@ -62,38 +62,62 @@
         <div class="social-icons" style="display: flex; justify-content: space-between; align-items: center; padding: 20px;margin: 5px 5px 5px 80px;">
             <div style="text-align: left;">
                 <p style="font-size: 18px; margin: 5px 80px 5px 5px;">
-                    <img src="html/line.png" alt="LINE" style="vertical-align: middle;">LINE：chloecheng678
+                    <img src="html/line.png" alt="LINE" style="vertical-align: middle;"> LINE：chloecheng678
                 </p>
                 <p style="font-size: 18px; margin: 5px 80px 5px 5px;">
                     <img src="html/discord.png" alt="Discord" style="vertical-align: middle;"> Discord：sakura._.666
                 </p>
             </div>
             <div id="visitorCounter" style="text-align: left; position: static; background: none;">
-                <p style="font-size: 18px; margin: 5px;">當前在線：<span id="activeUsers">1</span></p>
-                <p style="font-size: 18px; margin: 5px;">總訪問人數：<span id="totalVisitors">0</span></p>
+                <p style="font-size: 18px; margin: 5px;">當前在線：<span id="activeUsers">載入中...</span></p>
+                <p style="font-size: 18px; margin: 5px;">總訪問人數：<span id="totalVisitors">載入中...</span></p>
                 <script>
-                    // 使用 GA4 Data API 獲取數據
-                    function updateVisitorStats() {
-                        // 獲取活躍用戶數
-                        gtag('get', 'G-GK26YHVEMZ', 'screen_resolution', function(screenResolution) {
-                            document.getElementById('activeUsers').textContent = 
-                                window.dataLayer.filter(item => item[0] === 'config').length || '0';
-                        });
-
-                        // 獲取總訪問次數
-                        if (localStorage.getItem('totalVisits')) {
-                            document.getElementById('totalVisitors').textContent = 
-                                localStorage.getItem('totalVisits');
-                        } else {
-                            localStorage.setItem('totalVisits', '1');
-                            document.getElementById('totalVisitors').textContent = '1';
-                        }
+                    // 載入 Google Analytics Data API
+                    function loadGoogleAnalytics() {
+                        gapi.load('client', initGoogleAnalytics);
                     }
 
-                    // 頁面加載時更新數據
-                    window.onload = updateVisitorStats;
-                    // 每60秒更新一次數據
-                    setInterval(updateVisitorStats, 60000);
+                    // 初始化 Google Analytics API
+                    function initGoogleAnalytics() {
+                        gapi.client.init({
+                            'apiKey': 'AIzaSyABiSz9cyLYnSSYbBcLgW1LqAsGp0EwCdc',
+                            'discoveryDocs': ['https://analyticsdata.googleapis.com/$discovery/rest?version=v1beta'],
+                        }).then(function() {
+                            updateAnalyticsData();
+                        });
+                    }
+
+                    // 更新訪客數據
+                    function updateAnalyticsData() {
+                        // 查詢即時活躍用戶
+                        gapi.client.analyticsdata.properties.runRealtimeReport({
+                            'property': 'properties/G-GK26YHVEMZ',
+                            'dimensions': [{'name': 'unifiedScreenName'}],
+                            'metrics': [{'name': 'activeUsers'}]
+                        }).then(function(response) {
+                            const activeUsers = response.result.rows[0].metricValues[0].value;
+                            document.getElementById('activeUsers').textContent = activeUsers;
+                        });
+
+                        // 查詢總訪問人數
+                        gapi.client.analyticsdata.properties.runReport({
+                            'property': 'properties/G-GK26YHVEMZ',
+                            'dateRanges': [{'startDate': '2024-01-01', 'endDate': 'today'}],
+                            'metrics': [{'name': 'totalUsers'}]
+                        }).then(function(response) {
+                            const totalUsers = response.result.rows[0].metricValues[0].value;
+                            document.getElementById('totalVisitors').textContent = totalUsers;
+                        });
+                    }
+
+                    // 載入 Google API Client Library
+                    const script = document.createElement('script');
+                    script.src = 'https://apis.google.com/js/api.js';
+                    script.onload = loadGoogleAnalytics;
+                    document.head.appendChild(script);
+
+                    // 每1分鐘更新一次數據
+                    setInterval(updateAnalyticsData, 60000);
                 </script>
             </div>
         </div>
