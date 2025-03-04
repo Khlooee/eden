@@ -91,6 +91,58 @@
                     font-size: 19px;
                 }
 
+        .tier-table-container {
+            width: 95%;
+            margin:10px auto;
+            overflow-x: auto;
+        }
+
+        .tier-table {
+            width: 100%;
+            margin: 10px auto;
+            border-collapse: collapse;
+            background-color: #15151579;
+            box-shadow: 0px 0px 15px rgba(72, 72, 72, 0.579);
+            border-radius: 10px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .tier-table th, .tier-table td {
+            border: 0.5px solid #63636348;
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+            color: #ffffff;
+            width: 15%;
+        }
+
+        .tier-table th {
+            background-color: #2f2f2f;
+            color: rgb(255, 255, 255);
+            padding: 12px;
+            font-size: 17px;
+        }
+
+        .tier-table td {
+            line-height: 1.5;
+        }
+
+        @media screen and (max-width: 768px) {
+            .tier-table-container {
+                width: 100%;
+            }
+            .tier-table {
+                font-size: 14px;
+            }
+            .tier-table th, .tier-table td {
+                padding: 5px;
+                font-size: 14px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -222,6 +274,32 @@
             <li><strong>金武碎片：</strong>開放120+排隊，排到做成功為止。</li>
             <li><strong>金防/金飾碎片：</strong>開放120+排隊，每輪20個。每輪只可選一種排，成功則不可排另一個，沒成功可換種類排。</li>
         </ul>
+        <h2>金精髓自備一覽表</h2>
+        <div class="tier-table-container">
+            <table class="tier-table">
+                <h3 style="text-align: center;">  ( 技能 / 裝備 ) 需自備的精髓數</h3>
+                <tr>
+                    <th>價值低 / 沒人要</th>
+                    <th>價值低</th>
+                    <th>難出但優先級低</th>
+                    <th>難出且技能必做</th>
+                    <th>試煉王</th>
+                    <th>金收藏</th>
+                </tr>
+                <tr>
+                    <td>62EZ-09<br>65普魯特</td>
+                    <td>68哈尼文(0/1)<br>72維瑟斯(0/1)</td>
+                    <td>78亞拉金(0/2)<br>85卡威因(0/2)</td>
+                    <td>63布萊登(2/4)<br>77佩爾(2/4)</td>
+                    <td>60卡爾夏(4/4)<br>73賽勒(4/4)<br>84卡瑞克(4/4)</td>
+                    <td>87尼瑞玻斯<br>90拉頓<br>94雷斯</td>
+                </tr>
+            </table>
+        </div>
+        <div class="images" style="display: none">
+            <img src="金精髓排隊.png" alt="圖片1">
+        </div>
+
         <h2>指定資源</h2>
         <ul>
             <li>預定制度：每人每月有2次200鑽預定藍裝機會，本月110萬加2次次數，戰力標準逐月遞增。</li>
